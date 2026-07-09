@@ -209,6 +209,40 @@
   .foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.85rem}
   .surcharge{font-size:.8rem;color:#8FA3B5}
 
+  /* ---------- Brands ---------- */
+  .brands{background:var(--cream-2)}
+  .brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px;margin-top:40px}
+  .brand-tile{background:var(--white);border-radius:14px;padding:18px 12px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;text-decoration:none;box-shadow:var(--shadow);
+    min-height:110px;transition:transform .2s,box-shadow .2s}
+  .brand-tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,31,53,.18)}
+  .brand-tile img{height:44px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .2s,opacity .2s}
+  .brand-tile:hover img{filter:none;opacity:1}
+  .brand-tile span{font-weight:800;font-size:.82rem;color:var(--navy);text-align:center}
+  .brand-tile.text-only span{font-family:var(--serif);font-size:1.02rem}
+
+  /* ---------- Detail modal ---------- */
+  [data-detail]{cursor:pointer}
+  .tick-list li[data-detail]{border-radius:10px;transition:background .15s}
+  .tick-list li[data-detail]:hover{background:var(--cream)}
+  .tick-list li[data-detail]::after{content:"›";position:absolute;right:10px;top:8px;color:var(--amber-deep);font-weight:800;opacity:0;transition:opacity .15s}
+  .tick-list li[data-detail]:hover::after{opacity:1}
+  .more-hint{font-size:.82rem;color:var(--amber-deep);font-weight:800;letter-spacing:.05em;margin-top:8px;display:inline-block}
+  .modal-backdrop{position:fixed;inset:0;background:rgba(11,31,53,.55);backdrop-filter:blur(3px);z-index:80;
+    display:none;align-items:center;justify-content:center;padding:20px}
+  .modal-backdrop.open{display:flex}
+  .modal{background:var(--white);border-radius:22px;max-width:520px;width:100%;padding:36px;box-shadow:0 30px 70px rgba(0,0,0,.4);
+    position:relative;animation:pop .22s ease}
+  @keyframes pop{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+  .modal h3{font-size:1.4rem;padding-right:36px}
+  .modal p{color:var(--mute);margin:12px 0 6px}
+  .modal .m-brands{font-size:.9rem;color:var(--navy);font-weight:700;margin:10px 0 20px}
+  .modal-close{position:absolute;top:16px;right:16px;background:var(--cream-2);border:0;width:38px;height:38px;
+    border-radius:50%;font-size:1.1rem;font-weight:800;color:var(--navy);cursor:pointer;transition:background .15s}
+  .modal-close:hover{background:var(--gold)}
+  .modal .m-cta{display:flex;gap:12px;flex-wrap:wrap}
+  .modal .m-cta .btn{padding:11px 20px;font-size:.92rem}
+
   /* reveal on scroll */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
   .reveal.in{opacity:1;transform:none}
@@ -228,6 +262,7 @@
     <nav class="links" id="navlinks">
       <a href="#about">About</a>
       <a href="#products">Products</a>
+      <a href="#brands">Brands</a>
       <a href="#events">Events</a>
       <a href="#tuffy">Rewards</a>
       <a href="#visit">Hours &amp; Visit</a>
@@ -334,10 +369,11 @@
         <h3 style="font-size:1.5rem">Mountain-Ready Nutrition</h3>
         <p style="color:var(--mute);margin-top:10px">From raw frozen and refrigerated foods to freeze-dried, kibble, and soft foods — a wide variety to meet every pet's dietary needs, no matter what age, shape, size or breed. Healthy, energized, and ready for the next adventure.</p>
         <ul class="tick-list">
-          <li><b>High Protein Kibble</b> — fuel for long hikes and cold winters</li>
-          <li><b>Freeze-Dried Raw</b> — lightweight nutrition for backpacking trips</li>
-          <li><b>Wet Food Toppers</b> — add hydration and flavor to every meal</li>
+          <li data-detail="kibble" title="Tap for details"><b>High Protein Kibble</b> — fuel for long hikes and cold winters</li>
+          <li data-detail="raw" title="Tap for details"><b>Freeze-Dried &amp; Raw</b> — lightweight nutrition for backpacking trips</li>
+          <li data-detail="toppers" title="Tap for details"><b>Wet Food Toppers</b> — add hydration and flavor to every meal</li>
         </ul>
+        <span class="more-hint">Tap any item for details ›</span>
       </div>
     </div>
 
@@ -350,10 +386,11 @@
         <h3 style="font-size:1.5rem">Supplements &amp; Natural Remedies</h3>
         <p style="color:var(--mute);margin-top:10px">Curated wellness for joint health, digestion, immunity, stress relief, and seasonal challenges — including CBD products for relief and comfort, especially for our senior pets. Clean, safe, and effective — made for life at altitude.</p>
         <ul class="tick-list">
-          <li><b>CBD &amp; Calming</b> — natural remedies for anxiety from storms, travel, or altitude changes</li>
-          <li><b>Joint Support</b> — glucosamine and chondroitin for active joints climbing steep trails</li>
-          <li><b>Paw Protection</b> — balms and waxes against snow, ice, salt and hot rocks</li>
+          <li data-detail="cbd" title="Tap for details"><b>CBD &amp; Calming</b> — natural remedies for anxiety from storms, travel, or altitude changes</li>
+          <li data-detail="joint" title="Tap for details"><b>Joint Support</b> — supplements and chews for active joints climbing steep trails</li>
+          <li data-detail="paw" title="Tap for details"><b>Paw Protection</b> — boots, balms and waxes against snow, ice, salt and hot rocks</li>
         </ul>
+        <span class="more-hint">Tap any item for details ›</span>
       </div>
     </div>
 
@@ -365,12 +402,13 @@
       <div class="reveal">
         <h3 style="font-size:1.5rem">Gear, Treats &amp; Everyday Essentials</h3>
         <ul class="tick-list">
-          <li><b>Premium pet foods</b> from trusted brands</li>
-          <li><b>Healthy treats</b>, training rewards, and long-lasting chews</li>
-          <li><b>Durable mountain-ready gear</b> for trail and town</li>
-          <li><b>Enrichment toys, beds</b>, and everyday essentials</li>
+          <li data-detail="treats" title="Tap for details"><b>Healthy treats</b>, training rewards, and long-lasting chews</li>
+          <li data-detail="gear" title="Tap for details"><b>Durable mountain-ready gear</b> for trail and town</li>
+          <li data-detail="toys" title="Tap for details"><b>Enrichment toys, beds</b>, and everyday essentials</li>
+          <li data-detail="birds" title="Tap for details"><b>Birds, chickens &amp; small pals</b> — wild bird seed, bulk feed, and small-animal supplies</li>
         </ul>
-        <a class="btn btn-navy" style="margin-top:22px" href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">Browse the full catalog →</a>
+        <span class="more-hint">Tap any item for details ›</span><br>
+        <a class="btn btn-navy" style="margin-top:22px" href="https://peak-pet-supply.cloveronline.com/categories/all" target="_blank" rel="noopener">Browse the full catalog →</a>
       </div>
     </div>
 
@@ -388,6 +426,34 @@
         <div style="display:flex;justify-content:space-between;font-weight:800"><span>GIFT CARD</span><span>⛰️</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ================= BRANDS ================= -->
+<section class="brands" id="brands">
+  <div class="wrap">
+    <span class="kicker reveal">On our shelves right now</span>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Brands you trust, stocked at 8,500 feet</h2>
+    <p class="lead reveal" style="margin-top:12px">A sampling from our shelves — tap any brand to visit their site, or <a href="https://peak-pet-supply.cloveronline.com/categories/all" target="_blank" rel="noopener" style="color:var(--amber-deep);font-weight:800">browse our full catalog online</a>.</p>
+    <div class="brand-grid reveal">
+      <a class="brand-tile" href="https://www.proplan.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/purina.com" alt="Purina Pro Plan logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Purina Pro Plan</span></a>
+      <a class="brand-tile" href="https://bluebuffalo.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/bluebuffalo.com" alt="Blue Buffalo logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Blue Buffalo</span></a>
+      <a class="brand-tile" href="https://frommfamily.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/frommfamily.com" alt="Fromm Family Foods logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Fromm</span></a>
+      <a class="brand-tile" href="https://nutrisourcepetfoods.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/nutrisourcepetfoods.com" alt="NutriSource logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>NutriSource</span></a>
+      <a class="brand-tile" href="https://canidae.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/canidae.com" alt="Canidae logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Canidae</span></a>
+      <a class="brand-tile" href="https://www.thehonestkitchen.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/thehonestkitchen.com" alt="The Honest Kitchen logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>The Honest Kitchen</span></a>
+      <a class="brand-tile" href="https://nw-naturals.net" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/nw-naturals.net" alt="Northwest Naturals logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Northwest Naturals</span></a>
+      <a class="brand-tile" href="https://carna4.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/carna4.com" alt="Carna4 logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Carna4</span></a>
+      <a class="brand-tile" href="https://www.kongcompany.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/kongcompany.com" alt="KONG logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>KONG</span></a>
+      <a class="brand-tile" href="https://www.coastalpet.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/coastalpet.com" alt="Coastal Pet logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Coastal Pet</span></a>
+      <a class="brand-tile" href="https://outwardhound.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/outwardhound.com" alt="Outward Hound logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Outward Hound</span></a>
+      <a class="brand-tile" href="https://oxbowanimalhealth.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/oxbowanimalhealth.com" alt="Oxbow Animal Health logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Oxbow</span></a>
+      <a class="brand-tile" href="https://tikipets.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/tikipets.com" alt="Tiki Pets logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Tiki Cat</span></a>
+      <a class="brand-tile" href="https://vetsbest.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/vetsbest.com" alt="Vet's Best logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Vet's Best</span></a>
+      <a class="brand-tile" href="https://www.suziescbdtreats.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/suziescbdtreats.com" alt="Suzie's CBD Treats logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Suzie's CBD</span></a>
+      <a class="brand-tile" href="https://himalayan.pet" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/himalayan.pet" alt="Himalayan Pet Supply logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Himalayan</span></a>
+    </div>
+    <p class="reveal" style="margin-top:22px;color:var(--mute);font-size:.92rem">…plus Tuesday's, Wholesomes, Tall Tails, LickiMat, HomeoPet, Pet Honesty, World's Best Cat Litter, Kaytee, Higgins, ZuPreem, and more — new brands arriving all the time.</p>
   </div>
 </section>
 
@@ -505,6 +571,7 @@
         <h4>Explore</h4>
         <a href="#about">About</a>
         <a href="#products">Products</a>
+        <a href="#brands">Brands</a>
         <a href="#events">Events</a>
         <a href="#tuffy">Tuffy Rewards</a>
         <a href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">Shop Online</a>
@@ -524,6 +591,20 @@
     </div>
   </div>
 </footer>
+
+<!-- ================= DETAIL MODAL ================= -->
+<div class="modal-backdrop" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalBody"></p>
+    <div class="m-brands" id="modalBrands"></div>
+    <div class="m-cta">
+      <a class="btn btn-gold" href="https://peak-pet-supply.cloveronline.com/categories/all" target="_blank" rel="noopener">🛒 Browse online</a>
+      <a class="btn btn-line" href="tel:+13038074090">📞 Ask us</a>
+    </div>
+  </div>
+</div>
 
 <!-- ================= STICKY CALL BAR (mobile) ================= -->
 <div class="callbar" id="callbar" aria-hidden="true">
@@ -578,6 +659,39 @@
     );
     window.location.href = 'mailto:peakpetsupply@gmail.com?subject=' + subject + '&body=' + body;
   });
+
+  // Detail modals — every product line is clickable; content drawn from Peak's real inventory
+  const DETAILS = {
+    kibble:  { t: 'High Protein Kibble', b: 'Big bags for big appetites: large-breed, puppy, senior, weight-management, and sensitive skin & stomach formulas — fuel for long hikes and cold winters.', br: 'On our shelves: Purina Pro Plan & Purina One, Blue Buffalo, Canidae, NutriSource, Pedigree' },
+    raw:     { t: 'Freeze-Dried & Raw', b: 'Raw frozen nuggets and bars, freeze-dried, and air-dried options — lightweight, high-value nutrition for backpacking trips and picky eaters alike.', br: 'On our shelves: Northwest Naturals, OC Raw, Badlands Ranch, Carna4' },
+    toppers: { t: 'Wet Food Toppers', b: 'Protein toppers, broths, and lickable treats that add hydration and flavor to every meal — especially important for pets living at altitude.', br: "On our shelves: The Honest Kitchen, Inaba Churu, Tiki Cat, Fancy Feast" },
+    cbd:     { t: 'CBD & Calming', b: 'Natural remedies for anxiety from storms, travel, fireworks, or altitude changes — gentle options our senior pets especially appreciate.', br: "On our shelves: Suzie's CBD Hearts, HomeoPet Storm Stress & Fireworks" },
+    joint:   { t: 'Joint Support', b: 'Supplements and functional chews for active joints climbing steep trails — from daily probiotics to hip & joint chews by size.', br: 'On our shelves: Himalayan Hip & Joint chews, Pet Honesty supplements' },
+    paw:     { t: 'Paw Protection', b: 'Boots, balms and waxes that protect paws against snow, ice, salt, and hot summer rock — a mountain must-have year-round.', br: 'On our shelves: Protex Pawz boots, paw balms & waxes' },
+    treats:  { t: 'Treats, Rewards & Chews', b: 'Single-ingredient jerky, training bites, bully sticks, collagen chews, yak cheese, no-hide chews — a whole wall of ways to say good dog.', br: "On our shelves: Tuesday's, Wholesomes, Earth Animal No-Hide, Polkadog, Bocce's Bakery" },
+    gear:    { t: 'Mountain-Ready Gear', b: 'Collars, leashes, harnesses, head halters, light-up neck rings for dark trail evenings, tie-outs, and winter wear that holds up in real weather.', br: 'On our shelves: Coastal Pet, K9 Explorer, Protex Pawz' },
+    toys:    { t: 'Toys, Beds & Essentials', b: 'Enrichment puzzles, slow feeders, plush and tough toys, beds, bowls, litter, grooming tools — the everyday stuff, chosen well.', br: "On our shelves: KONG, Outward Hound, Tall Tails, LickiMat, Squishmallows, World's Best Cat Litter" },
+    birds:   { t: 'Birds, Chickens & Small Pals', b: 'Wild bird seed and feeders, chicken feed and scratch by the bucket, plus food, hay, and bedding for rabbits, chinchillas, and other small companions.', br: 'On our shelves: Oxbow, Kaytee, Higgins, ZuPreem, Round Lake Farm, bulk feed buckets' }
+  };
+  const modalBack = document.getElementById('modalBack');
+  const openModal = key => {
+    const d = DETAILS[key]; if (!d) return;
+    document.getElementById('modalTitle').textContent = d.t;
+    document.getElementById('modalBody').textContent = d.b;
+    document.getElementById('modalBrands').textContent = d.br;
+    modalBack.classList.add('open');
+    document.getElementById('modalClose').focus();
+  };
+  const closeModal = () => modalBack.classList.remove('open');
+  document.querySelectorAll('[data-detail]').forEach(el => {
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('click', () => openModal(el.dataset.detail));
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(el.dataset.detail); } });
+  });
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modalBack.addEventListener('click', e => { if (e.target === modalBack) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   // Reveal on scroll (with fallback: never hide content if IO is unavailable)
   if ('IntersectionObserver' in window) {
