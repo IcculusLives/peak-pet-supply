@@ -85,8 +85,8 @@
   .star{animation:twinkle 3.2s ease-in-out infinite}
   .star:nth-of-type(2n){animation-delay:1.1s}.star:nth-of-type(3n){animation-delay:2s}
   @keyframes twinkle{0%,100%{opacity:.9}50%{opacity:.15}}
-  .cloud{animation:drift 46s linear infinite;opacity:.5}
-  .cloud.c2{animation-duration:64s;animation-delay:-22s;opacity:.35}
+  .cloud{animation:drift 46s linear infinite;opacity:.28}
+  .cloud.c2{animation-duration:64s;animation-delay:-22s;opacity:.18}
   @keyframes drift{from{transform:translateX(-320px)}to{transform:translateX(1760px)}}
   .sun-halo{animation:glow 5s ease-in-out infinite}
   @keyframes glow{0%,100%{opacity:.18}50%{opacity:.32}}
@@ -261,19 +261,10 @@
     </g>
     <circle cx="1080" cy="200" r="74" fill="#F2C014" opacity=".95"/>
     <circle class="sun-halo" cx="1080" cy="200" r="110" fill="#F2C014"/>
-    <g class="cloud"><ellipse cx="180" cy="150" rx="90" ry="20" fill="#FAF4E8"/><ellipse cx="250" cy="138" rx="60" ry="16" fill="#FAF4E8"/></g>
-    <g class="cloud c2"><ellipse cx="60" cy="240" rx="110" ry="22" fill="#FAF4E8"/><ellipse cx="150" cy="228" rx="70" ry="17" fill="#FAF4E8"/></g>
+    <g class="cloud" opacity=".28"><ellipse cx="180" cy="96" rx="90" ry="18" fill="#FAF4E8"/><ellipse cx="250" cy="86" rx="60" ry="14" fill="#FAF4E8"/></g>
+    <g class="cloud c2" opacity=".18"><ellipse cx="60" cy="140" rx="110" ry="20" fill="#FAF4E8"/><ellipse cx="150" cy="130" rx="70" ry="15" fill="#FAF4E8"/></g>
     <path d="M0 430 L210 250 L330 360 L470 210 L620 400 L760 300 L900 420 L1440 330 L1440 640 L0 640 Z" fill="url(#mFar)" opacity=".85"/>
-    <path d="M470 210 L510 260 L470 292 L430 258 Z" fill="#FAF4E8" opacity=".9"/>
-    <path d="M210 250 L242 292 L210 318 L180 290 Z" fill="#FAF4E8" opacity=".75"/>
     <path d="M0 520 L260 380 L420 470 L640 350 L860 500 L1080 400 L1290 490 L1440 440 L1440 640 L0 640 Z" fill="url(#mNear)"/>
-    <g transform="translate(985,395) scale(1.12)">
-      <path d="M0 96 C-6 60 -8 34 6 20 C16 10 34 8 48 14 C60 4 78 2 90 10 C104 18 108 34 104 50 C112 66 110 84 100 96 Z" fill="#0B1F35"/>
-      <path d="M48 14 C46 2 38 -6 30 -8 C26 0 28 10 34 16 Z" fill="#0B1F35"/>
-      <path d="M90 10 C94 -2 104 -8 112 -8 C114 2 110 12 102 16 Z" fill="#0B1F35"/>
-      <ellipse cx="30" cy="97" rx="9" ry="5" fill="#081524"/>
-      <ellipse cx="78" cy="97" rx="9" ry="5" fill="#081524"/>
-    </g>
   </svg>
   <div class="hero-inner">
     <div class="wrap">
