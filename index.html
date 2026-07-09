@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peak Pet Supply — Black Hawk, Colorado | Premium Pet Store in Gilpin County</title>
+<meta name="description" content="Peak Pet Supply is Black Hawk's locally owned pet store: premium natural food, supplements, and mountain-ready gear for pets. On the Peak to Peak Scenic Byway, serving all of Gilpin County.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1F35; --navy-2:#12304E; --navy-3:#1B4066;
+    --gold:#F2C014; --amber:#E8A33D; --amber-deep:#C97F2C;
+    --cream:#FAF4E8; --cream-2:#F3EAD7; --white:#FFFFFF;
+    --ink:#22303F; --mute:#5D6B7A; --sky:#BFD7EA;
+    --radius:18px; --shadow:0 10px 30px rgba(11,31,53,.12);
+    --serif:'Fraunces',Georgia,serif; --sans:'Nunito Sans',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6}
+  img{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--serif);color:var(--navy);line-height:1.15}
+  section{padding:84px 0}
+  .wrap{width:min(1120px,92%);margin:0 auto}
+  .kicker{display:inline-block;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:var(--amber-deep);margin-bottom:10px}
+  .lead{font-size:1.12rem;color:var(--mute);max-width:640px}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:800;font-size:1rem;
+    padding:14px 26px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:.2s transform,.2s box-shadow}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,31,53,.22)}
+  .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-navy{background:var(--navy);color:var(--white)}
+  .btn-line{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+  .btn-line.on-dark{color:var(--white);border-color:rgba(255,255,255,.7)}
+
+  /* ---------- Nav ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(11,31,53,.96);backdrop-filter:blur(8px);box-shadow:0 2px 18px rgba(11,31,53,.35)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand svg{height:44px;width:auto}
+  .brand-name{font-family:var(--serif);color:var(--white);font-weight:700;font-size:1.18rem;letter-spacing:.10em}
+  .brand-name small{display:block;font-family:var(--sans);font-weight:600;font-size:.62rem;letter-spacing:.34em;color:var(--gold)}
+  nav.links{display:flex;align-items:center;gap:26px}
+  nav.links a{color:#D9E4EF;text-decoration:none;font-weight:700;font-size:.95rem;transition:color .15s}
+  nav.links a:hover{color:var(--gold)}
+  .nav .btn{padding:10px 20px;font-size:.92rem}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{display:block;width:24px;height:3px;background:var(--white);margin:5px 0;border-radius:2px;transition:.25s}
+  @media(max-width:920px){
+    nav.links{position:fixed;inset:76px 0 auto 0;background:var(--navy);flex-direction:column;padding:26px;gap:20px;
+      transform:translateY(-130%);transition:transform .3s;box-shadow:0 18px 30px rgba(0,0,0,.35)}
+    nav.links.open{transform:translateY(0)}
+    .burger{display:block}
+    .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;background:linear-gradient(180deg,#0B1F35 0%,#12304E 46%,#8A5A2B 86%,#C97F2C 100%);overflow:hidden;padding:0}
+  .hero .art{display:block;width:100%;height:auto}
+  .hero-inner{position:absolute;inset:0;display:flex;align-items:center}
+  .hero-copy{max-width:600px;color:var(--white)}
+  .hero-copy .kicker{color:var(--gold)}
+  .hero-copy h1{color:var(--white);font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:900;margin-bottom:16px}
+  .hero-copy p{font-size:clamp(1rem,1.6vw,1.22rem);color:#EAF0F6;margin-bottom:28px;max-width:520px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-badge{position:absolute;right:4%;bottom:8%;background:rgba(250,244,232,.94);border-radius:var(--radius);
+    padding:14px 20px;font-weight:800;color:var(--navy);box-shadow:var(--shadow);display:flex;gap:10px;align-items:center}
+  @media(max-width:860px){
+    .hero{background:linear-gradient(180deg,#0B1F35,#12304E 55%,#8A5A2B)}
+    .hero .art{min-height:560px;object-fit:cover}
+    .hero-badge{display:none}
+  }
+
+  /* ---------- Cards ---------- */
+  .grid{display:grid;gap:26px}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .grid.c2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:860px){.grid.c3,.grid.c2{grid-template-columns:1fr}}
+  .card{background:var(--white);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  .card h3{font-size:1.25rem;margin:14px 0 8px}
+  .card p{color:var(--mute);font-size:.98rem}
+  .chip{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:var(--cream-2);font-size:1.5rem}
+
+  /* ---------- Photo placeholders ---------- */
+  .photo-slot{border-radius:var(--radius);background:repeating-linear-gradient(45deg,var(--cream-2),var(--cream-2) 14px,#EDE2C8 14px,#EDE2C8 28px);
+    border:2px dashed var(--amber);display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:var(--amber-deep);font-weight:800;text-align:center;padding:20px;min-height:230px}
+  .photo-slot small{font-weight:600;color:var(--mute);margin-top:6px}
+
+  /* ---------- Products ---------- */
+  .prod{background:var(--white)}
+  .prod-block{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:54px}
+  .prod-block:nth-child(odd) .photo-slot{order:2}
+  @media(max-width:860px){.prod-block{grid-template-columns:1fr}.prod-block .photo-slot{order:0!important}}
+  .tick-list{list-style:none;margin-top:14px}
+  .tick-list li{padding:9px 0 9px 36px;position:relative;color:var(--ink);font-weight:600}
+  .tick-list li::before{content:"🐾";position:absolute;left:0;top:8px;font-size:.95rem}
+  .tick-list li b{color:var(--navy)}
+
+  /* ---------- Gift cards ---------- */
+  .gift{background:linear-gradient(120deg,var(--navy) 0%,var(--navy-3) 100%);color:var(--white);border-radius:26px;
+    padding:52px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;box-shadow:var(--shadow)}
+  .gift h2{color:var(--white)}
+  .gift p{color:#D9E4EF;margin:12px 0 24px}
+  .giftcard-visual{background:linear-gradient(135deg,var(--gold),var(--amber));border-radius:18px;aspect-ratio:8/5;
+    padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:var(--navy);box-shadow:0 16px 34px rgba(0,0,0,.35);transform:rotate(3deg)}
+  .giftcard-visual b{font-family:var(--serif);letter-spacing:.08em}
+  @media(max-width:860px){.gift{grid-template-columns:1fr;padding:34px}}
+
+  /* ---------- Events ---------- */
+  .event-card{display:flex;gap:22px;align-items:flex-start}
+  .date-tile{flex:0 0 auto;background:var(--navy);color:var(--white);border-radius:14px;text-align:center;padding:12px 16px;min-width:78px}
+  .date-tile b{display:block;font-size:1.5rem;color:var(--gold);font-family:var(--serif)}
+  .edit-flag{display:inline-block;background:#FBE9C6;color:var(--amber-deep);font-size:.72rem;font-weight:800;
+    letter-spacing:.08em;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle}
+
+  /* ---------- Tuffy ---------- */
+  .tuffy{background:var(--cream-2)}
+  .tuffy-box{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;background:var(--white);
+    border-radius:26px;padding:46px;box-shadow:var(--shadow);border:3px solid var(--gold)}
+  .tuffy-medal{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE07A,var(--gold) 60%,var(--amber));
+    display:flex;align-items:center;justify-content:center;font-size:3.4rem;box-shadow:0 10px 24px rgba(201,127,44,.45)}
+  @media(max-width:720px){.tuffy-box{grid-template-columns:1fr;text-align:center}.tuffy-medal{margin:0 auto}}
+
+  /* ---------- Visit ---------- */
+  .visit{background:var(--white)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:stretch}
+  @media(max-width:900px){.visit-grid{grid-template-columns:1fr}}
+  .hours-table{width:100%;border-collapse:collapse;margin:18px 0 26px}
+  .hours-table td{padding:9px 4px;border-bottom:1px solid var(--cream-2);font-weight:600}
+  .hours-table td:last-child{text-align:right;color:var(--navy)}
+  .hours-table tr.today td{color:var(--amber-deep);font-weight:800}
+  .map-frame{border:0;width:100%;height:100%;min-height:420px;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .contact-lines a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--navy);font-weight:800;padding:8px 0;font-size:1.05rem}
+  .contact-lines a:hover{color:var(--amber-deep)}
+
+  /* ---------- Contact form ---------- */
+  .contact{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+  .form-card{background:var(--white);border-radius:26px;box-shadow:var(--shadow);padding:46px;max-width:720px;margin:40px auto 0}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .form-grid .full{grid-column:1/-1}
+  @media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+  label{font-weight:800;font-size:.88rem;color:var(--navy);display:block;margin-bottom:6px}
+  input,textarea{width:100%;padding:13px 16px;border:2px solid var(--cream-2);border-radius:12px;font-family:var(--sans);font-size:1rem;background:var(--cream);transition:border-color .15s}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold);background:var(--white)}
+  .form-note{font-size:.85rem;color:var(--mute);margin-top:14px}
+  .form-error{color:#B3261E;font-weight:700;font-size:.9rem;margin-top:10px;display:none}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy);color:#C9D6E2;padding:56px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:34px}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr}}
+  footer h4{color:var(--white);font-family:var(--serif);margin-bottom:14px;font-size:1.05rem}
+  footer a{color:#C9D6E2;text-decoration:none;display:block;padding:4px 0;font-weight:600}
+  footer a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.85rem}
+  .surcharge{font-size:.8rem;color:#8FA3B5}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Peak Pet Supply home">
+      <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 78 L44 28 L60 48 L76 20 L112 78 Z" fill="#BFD7EA"/>
+        <path d="M8 78 L44 28 L60 48 L52 78 Z" fill="#7FA6C6"/>
+        <path d="M76 20 L84 32 L76 40 L68 32 Z" fill="#FAF4E8"/>
+        <circle cx="97" cy="16" r="9" fill="#F2C014"/>
+        <ellipse cx="60" cy="66" rx="7.5" ry="6" fill="#0B1F35" stroke="#F2C014" stroke-width="1.4"/>
+        <circle cx="51.5" cy="56" r="3.1" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
+        <circle cx="57.5" cy="52.5" r="3.3" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
+        <circle cx="63.5" cy="52.5" r="3.3" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
+        <circle cx="69.5" cy="56" r="3.1" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
+      </svg>
+      <span class="brand-name">PEAK<small>PET&nbsp;SUPPLY</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#events">Events</a>
+      <a href="#tuffy">Rewards</a>
+      <a href="#visit">Hours &amp; Visit</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-gold" href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">🛒 Shop Online</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <svg class="art" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0B1F35"/><stop offset="45%" stop-color="#1B4066"/>
+        <stop offset="78%" stop-color="#8A5A2B"/><stop offset="100%" stop-color="#E8A33D"/>
+      </linearGradient>
+      <linearGradient id="mFar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2C5580"/><stop offset="100%" stop-color="#1B4066"/>
+      </linearGradient>
+      <linearGradient id="mNear" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#16334F"/><stop offset="100%" stop-color="#0B1F35"/>
+      </linearGradient>
+    </defs>
+    <rect width="1440" height="640" fill="url(#skyG)"/>
+    <circle cx="1080" cy="200" r="74" fill="#F2C014" opacity=".95"/>
+    <circle cx="1080" cy="200" r="110" fill="#F2C014" opacity=".18"/>
+    <path d="M0 430 L210 250 L330 360 L470 210 L620 400 L760 300 L900 420 L1440 330 L1440 640 L0 640 Z" fill="url(#mFar)" opacity=".85"/>
+    <path d="M470 210 L510 260 L470 292 L430 258 Z" fill="#FAF4E8" opacity=".9"/>
+    <path d="M210 250 L242 292 L210 318 L180 290 Z" fill="#FAF4E8" opacity=".75"/>
+    <path d="M0 520 L260 380 L420 470 L640 350 L860 500 L1080 400 L1290 490 L1440 440 L1440 640 L0 640 Z" fill="url(#mNear)"/>
+    <g transform="translate(985,395) scale(1.12)">
+      <path d="M0 96 C-6 60 -8 34 6 20 C16 10 34 8 48 14 C60 4 78 2 90 10 C104 18 108 34 104 50 C112 66 110 84 100 96 Z" fill="#0B1F35"/>
+      <path d="M48 14 C46 2 38 -6 30 -8 C26 0 28 10 34 16 Z" fill="#0B1F35"/>
+      <path d="M90 10 C94 -2 104 -8 112 -8 C114 2 110 12 102 16 Z" fill="#0B1F35"/>
+      <ellipse cx="30" cy="97" rx="9" ry="5" fill="#081524"/>
+      <ellipse cx="78" cy="97" rx="9" ry="5" fill="#081524"/>
+    </g>
+    <g fill="#FAF4E8" opacity=".85">
+      <circle cx="150" cy="90" r="2.4"/><circle cx="300" cy="60" r="1.8"/><circle cx="520" cy="110" r="2.2"/>
+      <circle cx="700" cy="70" r="1.6"/><circle cx="880" cy="120" r="2"/><circle cx="1290" cy="80" r="2.2"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="kicker">Black Hawk · Peak to Peak Scenic Byway</span>
+        <h1>Where mountain pets<br>are family.</h1>
+        <p>Premium pet supplies, natural food, and mountain-ready gear — locally owned, in the heart of Gilpin County.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">🛒 Shop Online</a>
+          <a class="btn btn-line on-dark" href="#visit">📍 Visit the Store</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-badge">⛰️ 8,500 ft of pet expertise</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <span class="kicker reveal">Gilpin County's Mountain Pet Supply Shop</span>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem);max-width:700px">We're thrilled to open our doors to the locals and visitors of Black Hawk.</h2>
+    <p class="lead reveal" style="margin-top:14px">Whether you live here year-round or are just passing through for a weekend adventure, we're your hub for quality pet care in the mountains.</p>
+    <div class="grid c3" style="margin-top:46px">
+      <div class="card reveal">
+        <span class="chip">🏔️</span>
+        <h3>Locally Owned</h3>
+        <p>Proudly serving Gilpin County — an independent store with a personal touch, built for the mountain community.</p>
+      </div>
+      <div class="card reveal">
+        <span class="chip">🐕</span>
+        <h3>Community</h3>
+        <p>A hub for mountain pet lovers — from Central City and Nederland to Rollinsville, Eldora, and everyone passing through from the Front Range.</p>
+      </div>
+      <div class="card reveal">
+        <span class="chip">🌲</span>
+        <h3>Experts</h3>
+        <p>Curated for high-altitude living: knowledgeable staff who know what pets need to thrive at elevation.</p>
+      </div>
+    </div>
+    <div class="grid c2" style="margin-top:26px">
+      <div class="photo-slot reveal" data-slot="storefront">
+        📸 Photo spot: the storefront
+        <small>Swap in a real photo of the shop on Golden Gate Canyon Rd — golden hour if you can!</small>
+      </div>
+      <div class="photo-slot reveal" data-slot="jaime-and-team">
+        📸 Photo spot: Jaime &amp; the team
+        <small>Customers shop local because of the people. Show them who they'll meet.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="prod" id="products">
+  <div class="wrap">
+    <span class="kicker reveal">Fuel for Adventure</span>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Something for every pet</h2>
+    <p class="lead reveal" style="margin-top:12px">An extensive range of trusted brands with quality ingredients and durability — for dogs, cats, and small animals, ready for whatever adventure awaits.</p>
+
+    <div class="prod-block">
+      <div class="photo-slot reveal" data-slot="nutrition-aisle">
+        📸 Photo spot: the food wall
+        <small>Raw, freeze-dried, kibble &amp; toppers on the shelves</small>
+      </div>
+      <div class="reveal">
+        <h3 style="font-size:1.5rem">Mountain-Ready Nutrition</h3>
+        <p style="color:var(--mute);margin-top:10px">From raw frozen and refrigerated foods to freeze-dried, kibble, and soft foods — a wide variety to meet every pet's dietary needs, no matter what age, shape, size or breed.</p>
+        <ul class="tick-list">
+          <li><b>High Protein Kibble</b> — fuel for long hikes and cold winters</li>
+          <li><b>Freeze-Dried Raw</b> — lightweight nutrition for backpacking trips</li>
+          <li><b>Wet Food Toppers</b> — add hydration and flavor to every meal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prod-block">
+      <div class="photo-slot reveal" data-slot="wellness-shelf">
+        📸 Photo spot: wellness &amp; remedies shelf
+        <small>Supplements, CBD products, paw balms</small>
+      </div>
+      <div class="reveal">
+        <h3 style="font-size:1.5rem">Supplements &amp; Natural Remedies</h3>
+        <p style="color:var(--mute);margin-top:10px">Curated wellness products for joint health, digestion, immunity, stress relief, and seasonal challenges — including CBD pet products for relief and comfort, especially for senior pets. Clean, safe, and effective — perfect for pets living at altitude.</p>
+        <ul class="tick-list">
+          <li><b>CBD &amp; Calming</b> — natural remedies for anxiety from storms, travel, or altitude changes</li>
+          <li><b>Joint Support</b> — glucosamine and chondroitin for active joints climbing steep trails</li>
+          <li><b>Paw Protection</b> — balms and waxes against snow, ice, salt and hot rocks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prod-block">
+      <div class="photo-slot reveal" data-slot="gear-wall">
+        📸 Photo spot: gear &amp; toys
+        <small>Leashes, coats, boots, enrichment toys</small>
+      </div>
+      <div class="reveal">
+        <h3 style="font-size:1.5rem">Gear, Treats &amp; Everyday Essentials</h3>
+        <ul class="tick-list">
+          <li><b>Premium pet foods</b> from trusted brands</li>
+          <li><b>Healthy treats</b>, training rewards, and long-lasting chews</li>
+          <li><b>Durable mountain-ready gear</b> for trail and town</li>
+          <li><b>Enrichment toys, beds</b>, and everyday essentials</li>
+        </ul>
+        <a class="btn btn-navy" style="margin-top:22px" href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">Browse the full catalog →</a>
+      </div>
+    </div>
+
+    <!-- Gift cards -->
+    <div class="gift reveal" style="margin-top:70px" id="giftcards">
+      <div>
+        <span class="kicker" style="color:var(--gold)">Perfect for any occasion</span>
+        <h2 style="font-size:clamp(1.5rem,2.6vw,2.1rem)">Gift cards, now available in-store</h2>
+        <p>Looking for the perfect gift for a pet parent or someone visiting Black Hawk? Gift cards are redeemable in-store for food, gear, treats, and wellness products. Convenient, thoughtful, and always the right size.</p>
+        <a class="btn btn-gold" href="#visit">Pick one up in-store</a>
+      </div>
+      <div class="giftcard-visual">
+        <b>PEAK PET SUPPLY</b>
+        <div style="font-size:2rem">🐾</div>
+        <div style="display:flex;justify-content:space-between;font-weight:800"><span>GIFT CARD</span><span>⛰️</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVENTS ================= -->
+<section id="events">
+  <div class="wrap">
+    <span class="kicker reveal">Happening at Peak</span>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Special events <span class="edit-flag">Jaime: edit these!</span></h2>
+    <p class="lead reveal" style="margin-top:12px">A hub for mountain pet lovers means things happen here. Check back — or follow us on <a href="https://www.facebook.com/p/Peak-Pet-Supply-61583868833690/" target="_blank" rel="noopener" style="color:var(--amber-deep);font-weight:800">Facebook</a> — for the latest.</p>
+    <div class="grid c3" style="margin-top:44px">
+      <div class="card event-card reveal">
+        <div class="date-tile"><b>SAT</b>monthly</div>
+        <div><h3 style="margin-top:0">Pup Meet-up Saturdays</h3>
+        <p>Bring your dog by for treats, sniffs, and new friends. Placeholder — set your real date.</p></div>
+      </div>
+      <div class="card event-card reveal">
+        <div class="date-tile"><b>TBD</b>seasonal</div>
+        <div><h3 style="margin-top:0">Nutrition Q&amp;A Day</h3>
+        <p>Ask us anything about raw, freeze-dried, and altitude-ready feeding. Placeholder — set your real date.</p></div>
+      </div>
+      <div class="card event-card reveal">
+        <div class="date-tile"><b>TBD</b>holiday</div>
+        <div><h3 style="margin-top:0">Photos with Santa Paws</h3>
+        <p>Holiday photo day for pets of Gilpin County. Placeholder — set your real date.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TUFFY REWARDS ================= -->
+<section class="tuffy" id="tuffy">
+  <div class="wrap">
+    <div class="tuffy-box reveal">
+      <div class="tuffy-medal">🏅</div>
+      <div>
+        <span class="kicker">Coming soon</span>
+        <h2 style="font-size:clamp(1.5rem,2.6vw,2.1rem)">Tuffy Rewards — loyalty, the Peak way</h2>
+        <p style="color:var(--mute);margin:12px 0 20px">Our very own rewards program is on its way: earn points on every visit, get refill reminders before the food bowl runs empty, and unlock treats made for mountain pets. Ask us in-store to be first in line.</p>
+        <a class="btn btn-navy" href="mailto:peakpetsupply@gmail.com?subject=Sign%20me%20up%20for%20Tuffy%20Rewards!&body=Hi%20Peak%20Pet%20Supply%20%E2%80%94%20please%20add%20me%20to%20the%20Tuffy%20Rewards%20early%20list!%0A%0AName%3A%20%0APet's%20name%3A%20">🏅 Join the early list</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT ================= -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <span class="kicker reveal">Come say hi</span>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Hours &amp; directions</h2>
+    <div class="visit-grid" style="margin-top:40px">
+      <div class="reveal">
+        <div class="contact-lines">
+          <a href="https://maps.google.com/?q=972+Golden+Gate+Canyon+Rd,+Black+Hawk,+CO+80422" target="_blank" rel="noopener">📍 972 Golden Gate Canyon Rd, Black Hawk, CO 80422</a>
+          <a href="tel:+13038074090">📞 (303) 807-4090</a>
+          <a href="mailto:peakpetsupply@gmail.com">✉️ peakpetsupply@gmail.com</a>
+        </div>
+        <table class="hours-table" id="hoursTable">
+          <tr data-day="1"><td>Monday</td><td>10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="2"><td>Tuesday</td><td>10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="3"><td>Wednesday</td><td>10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="4"><td>Thursday</td><td>10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="5"><td>Friday</td><td>10:00 AM – 6:00 PM</td></tr>
+          <tr data-day="6"><td>Saturday</td><td>10:00 AM – 4:00 PM</td></tr>
+          <tr data-day="0"><td>Sunday</td><td>10:00 AM – 4:00 PM</td></tr>
+        </table>
+        <a class="btn btn-gold" href="https://maps.google.com/?q=972+Golden+Gate+Canyon+Rd,+Black+Hawk,+CO+80422" target="_blank" rel="noopener">🧭 Get directions</a>
+        <p style="margin-top:22px;color:var(--mute);font-size:.95rem">On the Peak to Peak Scenic Byway — serving Central City, Nederland, Clear Creek, Idaho Springs, Golden Gate Canyon, Rollinsville, Coal Creek, Tolland, Eldora, St.&nbsp;Mary's, and friends from Denver, Golden, and the whole Front Range.</p>
+      </div>
+      <div class="reveal">
+        <iframe class="map-frame" title="Map to Peak Pet Supply"
+          src="https://maps.google.com/maps?q=972%20Golden%20Gate%20Canyon%20Rd%2C%20Black%20Hawk%2C%20CO%2080422&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="kicker reveal">Get in touch</span>
+      <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Questions? Partnerships? Adoption?</h2>
+      <p class="lead reveal" style="margin:14px auto 0">Whether it's about pet supplies, collaboration, or adoption — we're here to help.</p>
+    </div>
+    <form class="form-card reveal" id="contactForm" novalidate>
+      <div class="form-grid">
+        <div><label for="fname">First name *</label><input id="fname" name="fname" autocomplete="given-name" required></div>
+        <div><label for="lname">Last name *</label><input id="lname" name="lname" autocomplete="family-name" required></div>
+        <div><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="full"><label for="message">Message *</label><textarea id="message" name="message" rows="5" required></textarea></div>
+      </div>
+      <div class="form-error" id="formError">Please fill in your name, email, and a message.</div>
+      <div style="display:flex;gap:14px;align-items:center;margin-top:22px;flex-wrap:wrap">
+        <button class="btn btn-gold" type="submit">Send message ✉️</button>
+        <a class="btn btn-line" href="tel:+13038074090">Or call (303) 807-4090</a>
+      </div>
+      <p class="form-note">Sending opens your email app with your message ready to go to peakpetsupply@gmail.com.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Peak Pet Supply</h4>
+        <p style="max-width:300px;font-size:.95rem">Locally owned, independent pet store built for the mountain community — helping pets live their best lives in Gilpin County and beyond.</p>
+        <p class="surcharge" style="margin-top:14px">Note: 3% surcharge on credit card transactions.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#events">Events</a>
+        <a href="#tuffy">Tuffy Rewards</a>
+        <a href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">Shop Online</a>
+      </div>
+      <div>
+        <h4>Find us</h4>
+        <a href="https://maps.google.com/?q=972+Golden+Gate+Canyon+Rd,+Black+Hawk,+CO+80422" target="_blank" rel="noopener">972 Golden Gate Canyon Rd<br>Black Hawk, CO 80422</a>
+        <a href="tel:+13038074090">(303) 807-4090</a>
+        <a href="mailto:peakpetsupply@gmail.com">peakpetsupply@gmail.com</a>
+        <a href="https://www.facebook.com/p/Peak-Pet-Supply-61583868833690/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://nextdoor.com/pages/peak-pet-supply-black-hawk-co/" target="_blank" rel="noopener">Nextdoor</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Peak Pet Supply · Black Hawk, Colorado</span>
+      <span>Made with 🐾 in the Rockies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav
+  const burger = document.getElementById('burger');
+  const navlinks = document.getElementById('navlinks');
+  burger.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open'); burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Highlight today's hours
+  const today = new Date().getDay();
+  const row = document.querySelector('#hoursTable tr[data-day="' + today + '"]');
+  if (row) row.classList.add('today');
+
+  // Contact form -> prefilled mailto
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const err = document.getElementById('formError');
+    if (!v('fname') || !v('lname') || !v('email') || !v('message')) { err.style.display = 'block'; return; }
+    err.style.display = 'none';
+    const subject = encodeURIComponent('Website inquiry from ' + v('fname') + ' ' + v('lname'));
+    const body = encodeURIComponent(
+      v('message') + '\n\n—\n' + v('fname') + ' ' + v('lname') +
+      '\nEmail: ' + v('email') + (v('phone') ? '\nPhone: ' + v('phone') : '')
+    );
+    window.location.href = 'mailto:peakpetsupply@gmail.com?subject=' + subject + '&body=' + body;
+  });
+
+  // Reveal on scroll (with fallback: never hide content if IO is unavailable)
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
