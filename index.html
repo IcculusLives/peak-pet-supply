@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peak Pet Supply — Black Hawk, Colorado | Premium Pet Store in Gilpin County</title>
 <meta name="description" content="Peak Pet Supply is Black Hawk's locally owned pet store: premium natural food, supplements, and mountain-ready gear for pets. On the Peak to Peak Scenic Byway, serving all of Gilpin County.">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -150,9 +151,10 @@
   .tuffy{background:var(--cream-2)}
   .tuffy-box{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;background:var(--white);
     border-radius:26px;padding:46px;box-shadow:var(--shadow);border:3px solid var(--gold)}
-  .tuffy-medal{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE07A,var(--gold) 60%,var(--amber));
-    display:flex;align-items:center;justify-content:center;font-size:3.4rem;box-shadow:0 10px 24px rgba(201,127,44,.45);transition:transform .3s}
-  .tuffy-box:hover .tuffy-medal{transform:rotate(8deg) scale(1.06)}
+  .tuffy-medal{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE07A,var(--gold) 60%,var(--amber));
+    display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(201,127,44,.45);transition:transform .3s}
+  .tuffy-medal img{width:118px;height:auto;transform:translateY(-4px)}
+  .tuffy-box:hover .tuffy-medal{transform:rotate(6deg) scale(1.06)}
   @media(max-width:720px){.tuffy-box{grid-template-columns:1fr;text-align:center}.tuffy-medal{margin:0 auto}}
 
   /* ---------- Visit ---------- */
@@ -487,7 +489,7 @@
 <section class="tuffy" id="tuffy">
   <div class="wrap">
     <div class="tuffy-box reveal">
-      <div class="tuffy-medal">🏅</div>
+      <div class="tuffy-medal"><img src="tuffy.png" alt="Tuffy — Peak Pet Supply's plush pup mascot"></div>
       <div>
         <span class="kicker">Coming soon</span>
         <h2 style="font-size:clamp(1.5rem,2.6vw,2.1rem)">Tuffy Rewards — loyalty, the Peak way</h2>
