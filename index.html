@@ -29,28 +29,34 @@
 
   /* ---------- Buttons ---------- */
   .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:800;font-size:1rem;
-    padding:14px 26px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:.2s transform,.2s box-shadow}
+    padding:14px 26px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;
+    position:relative;overflow:hidden;transition:.2s transform,.2s box-shadow}
   .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(11,31,53,.22)}
+  .btn:active{transform:translateY(0) scale(.98)}
   .btn-gold{background:var(--gold);color:var(--navy)}
+  .btn-gold::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .45s ease}
+  .btn-gold:hover::after{left:130%}
   .btn-navy{background:var(--navy);color:var(--white)}
   .btn-line{background:transparent;color:var(--navy);border:2px solid var(--navy)}
   .btn-line.on-dark{color:var(--white);border-color:rgba(255,255,255,.7)}
 
   /* ---------- Nav ---------- */
   header{position:sticky;top:0;z-index:50;background:rgba(11,31,53,.96);backdrop-filter:blur(8px);box-shadow:0 2px 18px rgba(11,31,53,.35)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-  .brand svg{height:44px;width:auto}
-  .brand-name{font-family:var(--serif);color:var(--white);font-weight:700;font-size:1.18rem;letter-spacing:.10em}
-  .brand-name small{display:block;font-family:var(--sans);font-weight:600;font-size:.62rem;letter-spacing:.34em;color:var(--gold)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px}
+  .brand{display:flex;align-items:center;text-decoration:none}
+  .brand img{height:60px;width:auto;transition:transform .25s}
+  .brand:hover img{transform:scale(1.05)}
   nav.links{display:flex;align-items:center;gap:26px}
-  nav.links a{color:#D9E4EF;text-decoration:none;font-weight:700;font-size:.95rem;transition:color .15s}
-  nav.links a:hover{color:var(--gold)}
+  nav.links a{color:#D9E4EF;text-decoration:none;font-weight:700;font-size:.95rem;position:relative;transition:color .15s}
+  nav.links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--gold);transition:width .22s}
+  nav.links a:not(.btn):hover{color:var(--gold)}
+  nav.links a:not(.btn):hover::after{width:100%}
   .nav .btn{padding:10px 20px;font-size:.92rem}
   .burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
   .burger span{display:block;width:24px;height:3px;background:var(--white);margin:5px 0;border-radius:2px;transition:.25s}
   @media(max-width:920px){
-    nav.links{position:fixed;inset:76px 0 auto 0;background:var(--navy);flex-direction:column;padding:26px;gap:20px;
+    nav.links{position:fixed;inset:80px 0 auto 0;background:var(--navy);flex-direction:column;padding:26px;gap:20px;
       transform:translateY(-130%);transition:transform .3s;box-shadow:0 18px 30px rgba(0,0,0,.35)}
     nav.links.open{transform:translateY(0)}
     .burger{display:block}
@@ -63,10 +69,10 @@
   .hero{position:relative;background:linear-gradient(180deg,#0B1F35 0%,#12304E 46%,#8A5A2B 86%,#C97F2C 100%);overflow:hidden;padding:0}
   .hero .art{display:block;width:100%;height:auto}
   .hero-inner{position:absolute;inset:0;display:flex;align-items:center}
-  .hero-copy{max-width:600px;color:var(--white)}
+  .hero-copy{max-width:620px;color:var(--white)}
   .hero-copy .kicker{color:var(--gold)}
   .hero-copy h1{color:var(--white);font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:900;margin-bottom:16px}
-  .hero-copy p{font-size:clamp(1rem,1.6vw,1.22rem);color:#EAF0F6;margin-bottom:28px;max-width:520px}
+  .hero-copy p{font-size:clamp(1rem,1.6vw,1.2rem);color:#EAF0F6;margin-bottom:28px;max-width:540px}
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
   .hero-badge{position:absolute;right:4%;bottom:8%;background:rgba(250,244,232,.94);border-radius:var(--radius);
     padding:14px 20px;font-weight:800;color:var(--navy);box-shadow:var(--shadow);display:flex;gap:10px;align-items:center}
@@ -75,16 +81,33 @@
     .hero .art{min-height:560px;object-fit:cover}
     .hero-badge{display:none}
   }
+  /* hero life */
+  .star{animation:twinkle 3.2s ease-in-out infinite}
+  .star:nth-of-type(2n){animation-delay:1.1s}.star:nth-of-type(3n){animation-delay:2s}
+  @keyframes twinkle{0%,100%{opacity:.9}50%{opacity:.15}}
+  .cloud{animation:drift 46s linear infinite;opacity:.5}
+  .cloud.c2{animation-duration:64s;animation-delay:-22s;opacity:.35}
+  @keyframes drift{from{transform:translateX(-320px)}to{transform:translateX(1760px)}}
+  .sun-halo{animation:glow 5s ease-in-out infinite}
+  @keyframes glow{0%,100%{opacity:.18}50%{opacity:.32}}
+  @media(prefers-reduced-motion:reduce){
+    .star,.cloud,.sun-halo{animation:none}
+    .reveal{transition:none}
+    html{scroll-behavior:auto}
+  }
 
   /* ---------- Cards ---------- */
   .grid{display:grid;gap:26px}
   .grid.c3{grid-template-columns:repeat(3,1fr)}
   .grid.c2{grid-template-columns:repeat(2,1fr)}
   @media(max-width:860px){.grid.c3,.grid.c2{grid-template-columns:1fr}}
-  .card{background:var(--white);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  .card{background:var(--white);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);
+    transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,31,53,.18)}
   .card h3{font-size:1.25rem;margin:14px 0 8px}
   .card p{color:var(--mute);font-size:.98rem}
-  .chip{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:var(--cream-2);font-size:1.5rem}
+  .chip{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:var(--cream-2);font-size:1.5rem;transition:transform .25s}
+  .card:hover .chip{transform:rotate(-8deg) scale(1.12)}
 
   /* ---------- Photo placeholders ---------- */
   .photo-slot{border-radius:var(--radius);background:repeating-linear-gradient(45deg,var(--cream-2),var(--cream-2) 14px,#EDE2C8 14px,#EDE2C8 28px);
@@ -99,7 +122,8 @@
   @media(max-width:860px){.prod-block{grid-template-columns:1fr}.prod-block .photo-slot{order:0!important}}
   .tick-list{list-style:none;margin-top:14px}
   .tick-list li{padding:9px 0 9px 36px;position:relative;color:var(--ink);font-weight:600}
-  .tick-list li::before{content:"🐾";position:absolute;left:0;top:8px;font-size:.95rem}
+  .tick-list li::before{content:"🐾";position:absolute;left:0;top:8px;font-size:.95rem;display:inline-block;transition:transform .2s}
+  .tick-list li:hover::before{transform:rotate(-14deg) scale(1.25)}
   .tick-list li b{color:var(--navy)}
 
   /* ---------- Gift cards ---------- */
@@ -108,13 +132,16 @@
   .gift h2{color:var(--white)}
   .gift p{color:#D9E4EF;margin:12px 0 24px}
   .giftcard-visual{background:linear-gradient(135deg,var(--gold),var(--amber));border-radius:18px;aspect-ratio:8/5;
-    padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:var(--navy);box-shadow:0 16px 34px rgba(0,0,0,.35);transform:rotate(3deg)}
+    padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:var(--navy);
+    box-shadow:0 16px 34px rgba(0,0,0,.35);transform:rotate(3deg);transition:transform .35s ease}
+  .gift:hover .giftcard-visual{transform:rotate(0deg) translateY(-4px)}
   .giftcard-visual b{font-family:var(--serif);letter-spacing:.08em}
   @media(max-width:860px){.gift{grid-template-columns:1fr;padding:34px}}
 
   /* ---------- Events ---------- */
   .event-card{display:flex;gap:22px;align-items:flex-start}
-  .date-tile{flex:0 0 auto;background:var(--navy);color:var(--white);border-radius:14px;text-align:center;padding:12px 16px;min-width:78px}
+  .date-tile{flex:0 0 auto;background:var(--navy);color:var(--white);border-radius:14px;text-align:center;padding:12px 16px;min-width:78px;transition:background .25s}
+  .event-card:hover .date-tile{background:var(--amber-deep)}
   .date-tile b{display:block;font-size:1.5rem;color:var(--gold);font-family:var(--serif)}
   .edit-flag{display:inline-block;background:#FBE9C6;color:var(--amber-deep);font-size:.72rem;font-weight:800;
     letter-spacing:.08em;padding:3px 10px;border-radius:999px;margin-left:8px;vertical-align:middle}
@@ -124,7 +151,8 @@
   .tuffy-box{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;background:var(--white);
     border-radius:26px;padding:46px;box-shadow:var(--shadow);border:3px solid var(--gold)}
   .tuffy-medal{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE07A,var(--gold) 60%,var(--amber));
-    display:flex;align-items:center;justify-content:center;font-size:3.4rem;box-shadow:0 10px 24px rgba(201,127,44,.45)}
+    display:flex;align-items:center;justify-content:center;font-size:3.4rem;box-shadow:0 10px 24px rgba(201,127,44,.45);transition:transform .3s}
+  .tuffy-box:hover .tuffy-medal{transform:rotate(8deg) scale(1.06)}
   @media(max-width:720px){.tuffy-box{grid-template-columns:1fr;text-align:center}.tuffy-medal{margin:0 auto}}
 
   /* ---------- Visit ---------- */
@@ -135,9 +163,10 @@
   .hours-table td{padding:9px 4px;border-bottom:1px solid var(--cream-2);font-weight:600}
   .hours-table td:last-child{text-align:right;color:var(--navy)}
   .hours-table tr.today td{color:var(--amber-deep);font-weight:800}
+  .hours-table tr.today td:first-child::after{content:" · today";font-size:.8rem;letter-spacing:.06em}
   .map-frame{border:0;width:100%;height:100%;min-height:420px;border-radius:var(--radius);box-shadow:var(--shadow)}
-  .contact-lines a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--navy);font-weight:800;padding:8px 0;font-size:1.05rem}
-  .contact-lines a:hover{color:var(--amber-deep)}
+  .contact-lines a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--navy);font-weight:800;padding:8px 0;font-size:1.05rem;transition:color .15s,transform .15s}
+  .contact-lines a:hover{color:var(--amber-deep);transform:translateX(4px)}
 
   /* ---------- Contact form ---------- */
   .contact{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
@@ -146,10 +175,28 @@
   .form-grid .full{grid-column:1/-1}
   @media(max-width:640px){.form-grid{grid-template-columns:1fr}}
   label{font-weight:800;font-size:.88rem;color:var(--navy);display:block;margin-bottom:6px}
-  input,textarea{width:100%;padding:13px 16px;border:2px solid var(--cream-2);border-radius:12px;font-family:var(--sans);font-size:1rem;background:var(--cream);transition:border-color .15s}
-  input:focus,textarea:focus{outline:none;border-color:var(--gold);background:var(--white)}
+  input,textarea{width:100%;padding:13px 16px;border:2px solid var(--cream-2);border-radius:12px;font-family:var(--sans);font-size:1rem;background:var(--cream);transition:border-color .15s,box-shadow .15s}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold);background:var(--white);box-shadow:0 0 0 4px rgba(242,192,20,.18)}
   .form-note{font-size:.85rem;color:var(--mute);margin-top:14px}
   .form-error{color:#B3261E;font-weight:700;font-size:.9rem;margin-top:10px;display:none}
+
+  /* ---------- Sticky call bar (mobile) ---------- */
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
+    background:rgba(11,31,53,.97);backdrop-filter:blur(8px);box-shadow:0 -6px 20px rgba(0,0,0,.3);
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px;
+    transform:translateY(110%);transition:transform .3s ease}
+  .callbar.show{transform:translateY(0)}
+  .callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+    text-decoration:none;font-weight:800;font-size:.92rem;padding:11px 6px;border-radius:12px}
+  .callbar a.cb-call{background:var(--gold);color:var(--navy)}
+  .callbar a.cb-dir{background:var(--navy-3);color:var(--white)}
+  .callbar a.cb-shop{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.5)}
+  @media(max-width:760px){
+    .callbar{display:flex}
+    section{padding:64px 0}
+    body{padding-bottom:64px}
+    .hero-cta .btn{padding:13px 20px;font-size:.95rem}
+  }
 
   /* ---------- Footer ---------- */
   footer{background:var(--navy);color:#C9D6E2;padding:56px 0 30px}
@@ -158,6 +205,7 @@
   footer h4{color:var(--white);font-family:var(--serif);margin-bottom:14px;font-size:1.05rem}
   footer a{color:#C9D6E2;text-decoration:none;display:block;padding:4px 0;font-weight:600}
   footer a:hover{color:var(--gold)}
+  .foot-logo{height:88px;width:auto;margin-bottom:16px}
   .foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.85rem}
   .surcharge{font-size:.8rem;color:#8FA3B5}
 
@@ -172,18 +220,7 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Peak Pet Supply home">
-      <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8 78 L44 28 L60 48 L76 20 L112 78 Z" fill="#BFD7EA"/>
-        <path d="M8 78 L44 28 L60 48 L52 78 Z" fill="#7FA6C6"/>
-        <path d="M76 20 L84 32 L76 40 L68 32 Z" fill="#FAF4E8"/>
-        <circle cx="97" cy="16" r="9" fill="#F2C014"/>
-        <ellipse cx="60" cy="66" rx="7.5" ry="6" fill="#0B1F35" stroke="#F2C014" stroke-width="1.4"/>
-        <circle cx="51.5" cy="56" r="3.1" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
-        <circle cx="57.5" cy="52.5" r="3.3" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
-        <circle cx="63.5" cy="52.5" r="3.3" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
-        <circle cx="69.5" cy="56" r="3.1" fill="#0B1F35" stroke="#F2C014" stroke-width="1.2"/>
-      </svg>
-      <span class="brand-name">PEAK<small>PET&nbsp;SUPPLY</small></span>
+      <img src="logo.png" alt="Peak Pet Supply — dog standing on a mountain ridge">
     </a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -216,8 +253,16 @@
       </linearGradient>
     </defs>
     <rect width="1440" height="640" fill="url(#skyG)"/>
+    <g fill="#FAF4E8">
+      <circle class="star" cx="150" cy="90" r="2.4"/><circle class="star" cx="300" cy="60" r="1.8"/>
+      <circle class="star" cx="520" cy="110" r="2.2"/><circle class="star" cx="700" cy="70" r="1.6"/>
+      <circle class="star" cx="880" cy="120" r="2"/><circle class="star" cx="1290" cy="80" r="2.2"/>
+      <circle class="star" cx="420" cy="40" r="1.5"/><circle class="star" cx="1130" cy="50" r="1.7"/>
+    </g>
     <circle cx="1080" cy="200" r="74" fill="#F2C014" opacity=".95"/>
-    <circle cx="1080" cy="200" r="110" fill="#F2C014" opacity=".18"/>
+    <circle class="sun-halo" cx="1080" cy="200" r="110" fill="#F2C014"/>
+    <g class="cloud"><ellipse cx="180" cy="150" rx="90" ry="20" fill="#FAF4E8"/><ellipse cx="250" cy="138" rx="60" ry="16" fill="#FAF4E8"/></g>
+    <g class="cloud c2"><ellipse cx="60" cy="240" rx="110" ry="22" fill="#FAF4E8"/><ellipse cx="150" cy="228" rx="70" ry="17" fill="#FAF4E8"/></g>
     <path d="M0 430 L210 250 L330 360 L470 210 L620 400 L760 300 L900 420 L1440 330 L1440 640 L0 640 Z" fill="url(#mFar)" opacity=".85"/>
     <path d="M470 210 L510 260 L470 292 L430 258 Z" fill="#FAF4E8" opacity=".9"/>
     <path d="M210 250 L242 292 L210 318 L180 290 Z" fill="#FAF4E8" opacity=".75"/>
@@ -229,17 +274,13 @@
       <ellipse cx="30" cy="97" rx="9" ry="5" fill="#081524"/>
       <ellipse cx="78" cy="97" rx="9" ry="5" fill="#081524"/>
     </g>
-    <g fill="#FAF4E8" opacity=".85">
-      <circle cx="150" cy="90" r="2.4"/><circle cx="300" cy="60" r="1.8"/><circle cx="520" cy="110" r="2.2"/>
-      <circle cx="700" cy="70" r="1.6"/><circle cx="880" cy="120" r="2"/><circle cx="1290" cy="80" r="2.2"/>
-    </g>
   </svg>
   <div class="hero-inner">
     <div class="wrap">
       <div class="hero-copy">
         <span class="kicker">Black Hawk · Peak to Peak Scenic Byway</span>
         <h1>Where mountain pets<br>are family.</h1>
-        <p>Premium pet supplies, natural food, and mountain-ready gear — locally owned, in the heart of Gilpin County.</p>
+        <p>From first-puppy kibble to senior-dog comfort — premium food, natural remedies, and trail-ready gear, picked by neighbors who know what 8,500 feet asks of a pet.</p>
         <div class="hero-cta">
           <a class="btn btn-gold" href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">🛒 Shop Online</a>
           <a class="btn btn-line on-dark" href="#visit">📍 Visit the Store</a>
@@ -254,13 +295,13 @@
 <section id="about">
   <div class="wrap">
     <span class="kicker reveal">Gilpin County's Mountain Pet Supply Shop</span>
-    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem);max-width:700px">We're thrilled to open our doors to the locals and visitors of Black Hawk.</h2>
-    <p class="lead reveal" style="margin-top:14px">Whether you live here year-round or are just passing through for a weekend adventure, we're your hub for quality pet care in the mountains.</p>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem);max-width:700px">Come on in — muddy paws welcome.</h2>
+    <p class="lead reveal" style="margin-top:14px">We're thrilled to open our doors to the locals and visitors of Black Hawk. Whether you live here year-round or you're just passing through for a weekend adventure, this is your hub for quality pet care in the mountains.</p>
     <div class="grid c3" style="margin-top:46px">
       <div class="card reveal">
         <span class="chip">🏔️</span>
         <h3>Locally Owned</h3>
-        <p>Proudly serving Gilpin County — an independent store with a personal touch, built for the mountain community.</p>
+        <p>Proudly serving Gilpin County — an independent store with a personal touch, built by and for the mountain community.</p>
       </div>
       <div class="card reveal">
         <span class="chip">🐕</span>
@@ -270,7 +311,7 @@
       <div class="card reveal">
         <span class="chip">🌲</span>
         <h3>Experts</h3>
-        <p>Curated for high-altitude living: knowledgeable staff who know what pets need to thrive at elevation.</p>
+        <p>Curated for high-altitude living: staff who know what pets need to thrive at elevation, because our pets live here too.</p>
       </div>
     </div>
     <div class="grid c2" style="margin-top:26px">
@@ -290,8 +331,8 @@
 <section class="prod" id="products">
   <div class="wrap">
     <span class="kicker reveal">Fuel for Adventure</span>
-    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Something for every pet</h2>
-    <p class="lead reveal" style="margin-top:12px">An extensive range of trusted brands with quality ingredients and durability — for dogs, cats, and small animals, ready for whatever adventure awaits.</p>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Something for every pet — and every adventure</h2>
+    <p class="lead reveal" style="margin-top:12px">Trusted brands, quality ingredients, and gear that holds up on the trail — for dogs, cats, and small animals, whatever the season throws at you.</p>
 
     <div class="prod-block">
       <div class="photo-slot reveal" data-slot="nutrition-aisle">
@@ -300,7 +341,7 @@
       </div>
       <div class="reveal">
         <h3 style="font-size:1.5rem">Mountain-Ready Nutrition</h3>
-        <p style="color:var(--mute);margin-top:10px">From raw frozen and refrigerated foods to freeze-dried, kibble, and soft foods — a wide variety to meet every pet's dietary needs, no matter what age, shape, size or breed.</p>
+        <p style="color:var(--mute);margin-top:10px">From raw frozen and refrigerated foods to freeze-dried, kibble, and soft foods — a wide variety to meet every pet's dietary needs, no matter what age, shape, size or breed. Healthy, energized, and ready for the next adventure.</p>
         <ul class="tick-list">
           <li><b>High Protein Kibble</b> — fuel for long hikes and cold winters</li>
           <li><b>Freeze-Dried Raw</b> — lightweight nutrition for backpacking trips</li>
@@ -316,7 +357,7 @@
       </div>
       <div class="reveal">
         <h3 style="font-size:1.5rem">Supplements &amp; Natural Remedies</h3>
-        <p style="color:var(--mute);margin-top:10px">Curated wellness products for joint health, digestion, immunity, stress relief, and seasonal challenges — including CBD pet products for relief and comfort, especially for senior pets. Clean, safe, and effective — perfect for pets living at altitude.</p>
+        <p style="color:var(--mute);margin-top:10px">Curated wellness for joint health, digestion, immunity, stress relief, and seasonal challenges — including CBD products for relief and comfort, especially for our senior pets. Clean, safe, and effective — made for life at altitude.</p>
         <ul class="tick-list">
           <li><b>CBD &amp; Calming</b> — natural remedies for anxiety from storms, travel, or altitude changes</li>
           <li><b>Joint Support</b> — glucosamine and chondroitin for active joints climbing steep trails</li>
@@ -347,7 +388,7 @@
       <div>
         <span class="kicker" style="color:var(--gold)">Perfect for any occasion</span>
         <h2 style="font-size:clamp(1.5rem,2.6vw,2.1rem)">Gift cards, now available in-store</h2>
-        <p>Looking for the perfect gift for a pet parent or someone visiting Black Hawk? Gift cards are redeemable in-store for food, gear, treats, and wellness products. Convenient, thoughtful, and always the right size.</p>
+        <p>The perfect gift for a pet parent or someone visiting Black Hawk — redeemable in-store for food, gear, treats, and wellness products. Always the right size, never the wrong flavor.</p>
         <a class="btn btn-gold" href="#visit">Pick one up in-store</a>
       </div>
       <div class="giftcard-visual">
@@ -393,7 +434,7 @@
       <div>
         <span class="kicker">Coming soon</span>
         <h2 style="font-size:clamp(1.5rem,2.6vw,2.1rem)">Tuffy Rewards — loyalty, the Peak way</h2>
-        <p style="color:var(--mute);margin:12px 0 20px">Our very own rewards program is on its way: earn points on every visit, get refill reminders before the food bowl runs empty, and unlock treats made for mountain pets. Ask us in-store to be first in line.</p>
+        <p style="color:var(--mute);margin:12px 0 20px">Our very own rewards program is on its way: earn points on every visit, get a friendly heads-up before the food bowl runs empty, and unlock treats made for mountain pets. Ask us in-store to be first in line.</p>
         <a class="btn btn-navy" href="mailto:peakpetsupply@gmail.com?subject=Sign%20me%20up%20for%20Tuffy%20Rewards!&body=Hi%20Peak%20Pet%20Supply%20%E2%80%94%20please%20add%20me%20to%20the%20Tuffy%20Rewards%20early%20list!%0A%0AName%3A%20%0APet's%20name%3A%20">🏅 Join the early list</a>
       </div>
     </div>
@@ -405,6 +446,7 @@
   <div class="wrap">
     <span class="kicker reveal">Come say hi</span>
     <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Hours &amp; directions</h2>
+    <p class="lead reveal" style="margin-top:12px">Four-legged visitors get a warm welcome (and more than likely, a treat).</p>
     <div class="visit-grid" style="margin-top:40px">
       <div class="reveal">
         <div class="contact-lines">
@@ -439,7 +481,7 @@
     <div style="text-align:center">
       <span class="kicker reveal">Get in touch</span>
       <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Questions? Partnerships? Adoption?</h2>
-      <p class="lead reveal" style="margin:14px auto 0">Whether it's about pet supplies, collaboration, or adoption — we're here to help.</p>
+      <p class="lead reveal" style="margin:14px auto 0">Whether it's about pet supplies, collaboration, or adoption — we're here to help, and we answer like neighbors, not a call center.</p>
     </div>
     <form class="form-card reveal" id="contactForm" novalidate>
       <div class="form-grid">
@@ -464,7 +506,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <h4>Peak Pet Supply</h4>
+        <img class="foot-logo" src="logo.png" alt="Peak Pet Supply logo">
         <p style="max-width:300px;font-size:.95rem">Locally owned, independent pet store built for the mountain community — helping pets live their best lives in Gilpin County and beyond.</p>
         <p class="surcharge" style="margin-top:14px">Note: 3% surcharge on credit card transactions.</p>
       </div>
@@ -492,6 +534,13 @@
   </div>
 </footer>
 
+<!-- ================= STICKY CALL BAR (mobile) ================= -->
+<div class="callbar" id="callbar" aria-hidden="true">
+  <a class="cb-call" href="tel:+13038074090">📞 Call</a>
+  <a class="cb-dir" href="https://maps.google.com/?q=972+Golden+Gate+Canyon+Rd,+Black+Hawk,+CO+80422" target="_blank" rel="noopener">🧭 Directions</a>
+  <a class="cb-shop" href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">🛒 Shop</a>
+</div>
+
 <script>
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -513,6 +562,16 @@
   const today = new Date().getDay();
   const row = document.querySelector('#hoursTable tr[data-day="' + today + '"]');
   if (row) row.classList.add('today');
+
+  // Sticky call bar after scrolling past the hero
+  const callbar = document.getElementById('callbar');
+  const toggleBar = () => {
+    const show = window.scrollY > 480;
+    callbar.classList.toggle('show', show);
+    callbar.setAttribute('aria-hidden', !show);
+  };
+  window.addEventListener('scroll', toggleBar, { passive: true });
+  toggleBar();
 
   // Contact form -> prefilled mailto
   document.getElementById('contactForm').addEventListener('submit', function(e){
