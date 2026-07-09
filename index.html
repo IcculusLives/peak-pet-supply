@@ -212,14 +212,14 @@
   /* ---------- Brands ---------- */
   .brands{background:var(--cream-2)}
   .brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px;margin-top:40px}
-  .brand-tile{background:var(--white);border-radius:14px;padding:18px 12px;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:10px;text-decoration:none;box-shadow:var(--shadow);
-    min-height:110px;transition:transform .2s,box-shadow .2s}
+  .brand-tile{background:var(--white);border-radius:14px;padding:14px 16px;display:flex;flex-direction:row;
+    align-items:center;justify-content:flex-start;gap:12px;text-decoration:none;box-shadow:var(--shadow);
+    min-height:74px;transition:transform .2s,box-shadow .2s}
   .brand-tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,31,53,.18)}
-  .brand-tile img{height:44px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .2s,opacity .2s}
-  .brand-tile:hover img{filter:none;opacity:1}
-  .brand-tile span{font-weight:800;font-size:.82rem;color:var(--navy);text-align:center}
-  .brand-tile.text-only span{font-family:var(--serif);font-size:1.02rem}
+  .brand-tile img{height:32px;width:32px;object-fit:contain;border-radius:7px;flex:0 0 auto}
+  .brand-tile span{font-weight:800;font-size:.9rem;color:var(--navy);text-align:left;line-height:1.25}
+  .brand-tile.text-only{justify-content:center}
+  .brand-tile.text-only span{font-family:var(--serif);font-size:1rem;text-align:center}
 
   /* ---------- Detail modal ---------- */
   [data-detail]{cursor:pointer}
@@ -436,22 +436,22 @@
     <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">Brands you trust, stocked at 8,500 feet</h2>
     <p class="lead reveal" style="margin-top:12px">A sampling from our shelves — tap any brand to visit their site, or <a href="https://peak-pet-supply.cloveronline.com/categories/all" target="_blank" rel="noopener" style="color:var(--amber-deep);font-weight:800">browse our full catalog online</a>.</p>
     <div class="brand-grid reveal">
-      <a class="brand-tile" href="https://www.proplan.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/purina.com" alt="Purina Pro Plan logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Purina Pro Plan</span></a>
-      <a class="brand-tile" href="https://bluebuffalo.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/bluebuffalo.com" alt="Blue Buffalo logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Blue Buffalo</span></a>
-      <a class="brand-tile" href="https://frommfamily.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/frommfamily.com" alt="Fromm Family Foods logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Fromm</span></a>
-      <a class="brand-tile" href="https://nutrisourcepetfoods.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/nutrisourcepetfoods.com" alt="NutriSource logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>NutriSource</span></a>
-      <a class="brand-tile" href="https://canidae.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/canidae.com" alt="Canidae logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Canidae</span></a>
-      <a class="brand-tile" href="https://www.thehonestkitchen.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/thehonestkitchen.com" alt="The Honest Kitchen logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>The Honest Kitchen</span></a>
-      <a class="brand-tile" href="https://nw-naturals.net" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/nw-naturals.net" alt="Northwest Naturals logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Northwest Naturals</span></a>
-      <a class="brand-tile" href="https://carna4.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/carna4.com" alt="Carna4 logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Carna4</span></a>
-      <a class="brand-tile" href="https://www.kongcompany.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/kongcompany.com" alt="KONG logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>KONG</span></a>
-      <a class="brand-tile" href="https://www.coastalpet.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/coastalpet.com" alt="Coastal Pet logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Coastal Pet</span></a>
-      <a class="brand-tile" href="https://outwardhound.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/outwardhound.com" alt="Outward Hound logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Outward Hound</span></a>
-      <a class="brand-tile" href="https://oxbowanimalhealth.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/oxbowanimalhealth.com" alt="Oxbow Animal Health logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Oxbow</span></a>
-      <a class="brand-tile" href="https://tikipets.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/tikipets.com" alt="Tiki Pets logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Tiki Cat</span></a>
-      <a class="brand-tile" href="https://vetsbest.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/vetsbest.com" alt="Vet's Best logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Vet's Best</span></a>
-      <a class="brand-tile" href="https://www.suziescbdtreats.com" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/suziescbdtreats.com" alt="Suzie's CBD Treats logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Suzie's CBD</span></a>
-      <a class="brand-tile" href="https://himalayan.pet" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/himalayan.pet" alt="Himalayan Pet Supply logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Himalayan</span></a>
+      <a class="brand-tile" href="https://www.proplan.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=purina.com" alt="Purina Pro Plan logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Purina Pro Plan</span></a>
+      <a class="brand-tile" href="https://bluebuffalo.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=bluebuffalo.com" alt="Blue Buffalo logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Blue Buffalo</span></a>
+      <a class="brand-tile" href="https://frommfamily.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=frommfamily.com" alt="Fromm Family Foods logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Fromm</span></a>
+      <a class="brand-tile" href="https://nutrisourcepetfoods.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=nutrisourcepetfoods.com" alt="NutriSource logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>NutriSource</span></a>
+      <a class="brand-tile" href="https://canidae.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=canidae.com" alt="Canidae logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Canidae</span></a>
+      <a class="brand-tile" href="https://www.thehonestkitchen.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=thehonestkitchen.com" alt="The Honest Kitchen logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>The Honest Kitchen</span></a>
+      <a class="brand-tile" href="https://nw-naturals.net" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=nw-naturals.net" alt="Northwest Naturals logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Northwest Naturals</span></a>
+      <a class="brand-tile" href="https://carna4.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=carna4.com" alt="Carna4 logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Carna4</span></a>
+      <a class="brand-tile" href="https://www.kongcompany.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=kongcompany.com" alt="KONG logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>KONG</span></a>
+      <a class="brand-tile" href="https://www.coastalpet.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=coastalpet.com" alt="Coastal Pet logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Coastal Pet</span></a>
+      <a class="brand-tile" href="https://outwardhound.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=outwardhound.com" alt="Outward Hound logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Outward Hound</span></a>
+      <a class="brand-tile" href="https://oxbowanimalhealth.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=oxbowanimalhealth.com" alt="Oxbow Animal Health logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Oxbow</span></a>
+      <a class="brand-tile" href="https://tikipets.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=tikipets.com" alt="Tiki Pets logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Tiki Cat</span></a>
+      <a class="brand-tile" href="https://vetsbest.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=vetsbest.com" alt="Vet's Best logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Vet's Best</span></a>
+      <a class="brand-tile" href="https://www.suziescbdtreats.com" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=suziescbdtreats.com" alt="Suzie's CBD Treats logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Suzie's CBD</span></a>
+      <a class="brand-tile" href="https://himalayan.pet" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?sz=128&domain=himalayan.pet" alt="Himalayan Pet Supply logo" loading="lazy" onerror="this.parentElement.classList.add('text-only');this.remove()"><span>Himalayan</span></a>
     </div>
     <p class="reveal" style="margin-top:22px;color:var(--mute);font-size:.92rem">…plus Tuesday's, Wholesomes, Tall Tails, LickiMat, HomeoPet, Pet Honesty, World's Best Cat Litter, Kaytee, Higgins, ZuPreem, and more — new brands arriving all the time.</p>
   </div>
