@@ -116,6 +116,17 @@
     color:var(--amber-deep);font-weight:800;text-align:center;padding:20px;min-height:230px}
   .photo-slot small{font-weight:600;color:var(--mute);margin-top:6px}
 
+  /* ---------- Real photos ---------- */
+  .photo-real{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative;background:var(--navy)}
+  .photo-real img{width:100%;height:100%;min-height:280px;max-height:420px;object-fit:cover;display:block;transition:transform .4s ease}
+  .photo-real:hover img{transform:scale(1.04)}
+  .photo-real figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 18px 12px;
+    background:linear-gradient(transparent,rgba(11,31,53,.82));color:#FAF4E8;font-weight:700;font-size:.92rem}
+  .pack{background:var(--cream-2)}
+  .pack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+  @media(max-width:900px){.pack-grid{grid-template-columns:repeat(2,1fr)}}
+  .pack-grid .photo-real img{min-height:230px;max-height:300px}
+
   /* ---------- Products ---------- */
   .prod{background:var(--white)}
   .prod-block{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:54px}
@@ -343,14 +354,14 @@
       </div>
     </div>
     <div class="grid c2" style="margin-top:26px">
-      <div class="photo-slot reveal" data-slot="storefront">
-        📸 Photo spot: the storefront
-        <small>Swap in a real photo of the shop on Golden Gate Canyon Rd — golden hour if you can!</small>
-      </div>
-      <div class="photo-slot reveal" data-slot="jaime-and-team">
-        📸 Photo spot: Jaime &amp; the team
-        <small>Customers shop local because of the people. Show them who they'll meet.</small>
-      </div>
+      <figure class="photo-real reveal">
+        <img src="img/store-counter.jpg" alt="The Peak Pet Supply front counter — thank-you screen, handwritten deals, gift cards ready" loading="lazy">
+        <figcaption>The front counter — where the deals are handwritten and the welcome is real</figcaption>
+      </figure>
+      <figure class="photo-real reveal">
+        <img src="img/jaime-puppy.jpg" alt="Jaime smiling in the winter sun, holding a red lab puppy" loading="lazy">
+        <figcaption>Jaime — and a brand-new best friend</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -363,10 +374,10 @@
     <p class="lead reveal" style="margin-top:12px">Trusted brands, quality ingredients, and gear that holds up on the trail — for dogs, cats, and small animals, whatever the season throws at you.</p>
 
     <div class="prod-block">
-      <div class="photo-slot reveal" data-slot="nutrition-aisle">
-        📸 Photo spot: the food wall
-        <small>Raw, freeze-dried, kibble &amp; toppers on the shelves</small>
-      </div>
+      <figure class="photo-real reveal">
+        <img src="img/pup-treat-wall.jpg" alt="A puppy inspecting a box of Redbarn bully sticks in the store aisle" loading="lazy">
+        <figcaption>Quality inspection, in progress</figcaption>
+      </figure>
       <div class="reveal">
         <h3 style="font-size:1.5rem">Mountain-Ready Nutrition</h3>
         <p style="color:var(--mute);margin-top:10px">From raw frozen and refrigerated foods to freeze-dried, kibble, and soft foods — a wide variety to meet every pet's dietary needs, no matter what age, shape, size or breed. Healthy, energized, and ready for the next adventure.</p>
@@ -380,10 +391,10 @@
     </div>
 
     <div class="prod-block">
-      <div class="photo-slot reveal" data-slot="wellness-shelf">
-        📸 Photo spot: wellness &amp; remedies shelf
-        <small>Supplements, CBD products, paw balms</small>
-      </div>
+      <figure class="photo-real reveal">
+        <img src="img/lab-wildflowers.jpg" alt="A red lab sitting contentedly among mountain wildflowers" loading="lazy">
+        <figcaption>Thriving at altitude — the whole point</figcaption>
+      </figure>
       <div class="reveal">
         <h3 style="font-size:1.5rem">Supplements &amp; Natural Remedies</h3>
         <p style="color:var(--mute);margin-top:10px">Curated wellness for joint health, digestion, immunity, stress relief, and seasonal challenges — including CBD products for relief and comfort, especially for our senior pets. Clean, safe, and effective — made for life at altitude.</p>
@@ -397,10 +408,10 @@
     </div>
 
     <div class="prod-block">
-      <div class="photo-slot reveal" data-slot="gear-wall">
-        📸 Photo spot: gear &amp; toys
-        <small>Leashes, coats, boots, enrichment toys</small>
-      </div>
+      <figure class="photo-real reveal">
+        <img src="img/puppy-toys.jpg" alt="A red lab puppy on a plaid blanket surrounded by toys" loading="lazy">
+        <figcaption>Toy department, field-tested</figcaption>
+      </figure>
       <div class="reveal">
         <h3 style="font-size:1.5rem">Gear, Treats &amp; Everyday Essentials</h3>
         <ul class="tick-list">
@@ -427,6 +438,36 @@
         <div style="font-size:2rem">🐾</div>
         <div style="display:flex;justify-content:space-between;font-weight:800"><span>GIFT CARD</span><span>⛰️</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PEAK PACK ================= -->
+<section class="pack" id="pack">
+  <div class="wrap">
+    <span class="kicker reveal">Friends of the store</span>
+    <h2 class="reveal" style="font-size:clamp(1.7rem,3vw,2.4rem)">The Peak pack</h2>
+    <p class="lead reveal" style="margin-top:12px">Real mountain dogs, doing real mountain things. Send us yours — the wall of fame is just getting started.</p>
+    <div class="pack-grid">
+      <figure class="photo-real reveal">
+        <img src="img/creek-crossing.jpg" alt="A dog picking its way across a rocky mountain creek" loading="lazy">
+        <figcaption>Creek crossing, expert level</figcaption>
+      </figure>
+      <figure class="photo-real reveal">
+        <img src="img/trail-buddies.jpg" alt="Two dogs pausing together on a granite boulder" loading="lazy">
+        <figcaption>Trail buddies</figcaption>
+      </figure>
+      <figure class="photo-real reveal">
+        <img src="img/pup-in-aisle.jpg" alt="An Australian Shepherd puppy visiting the store aisle" loading="lazy">
+        <figcaption>First shopping trip</figcaption>
+      </figure>
+      <figure class="photo-real reveal">
+        <img src="img/boa-lab.jpg" alt="A lab wearing a pink feather boa, sitting proudly" loading="lazy">
+        <figcaption>Fashion has no rules here</figcaption>
+      </figure>
+    </div>
+    <div class="reveal" style="margin-top:26px">
+      <a class="btn btn-navy" href="mailto:peakpetsupply@gmail.com?subject=Peak%20pack%20photo!&body=Here's%20my%20pup%20for%20the%20wall%20of%20fame!%0A%0APet's%20name%3A%20">📸 Add your pup to the pack</a>
     </div>
   </div>
 </section>
@@ -574,6 +615,7 @@
         <a href="#about">About</a>
         <a href="#products">Products</a>
         <a href="#brands">Brands</a>
+        <a href="#pack">The Peak Pack</a>
         <a href="#events">Events</a>
         <a href="#tuffy">Tuffy Rewards</a>
         <a href="https://peak-pet-supply.cloveronline.com/" target="_blank" rel="noopener">Shop Online</a>
