@@ -20,6 +20,8 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
+  /* deep links (/#about, /#products…) must clear the sticky header */
+  [id]{scroll-margin-top:96px}
   body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6}
   img{max-width:100%;display:block}
   h1,h2,h3{font-family:var(--serif);color:var(--navy);line-height:1.15}
@@ -788,6 +790,26 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
+
+  /* Deep-link landing fix.
+     Arriving at /#about (e.g. from an old Wix URL or a Google result), the browser
+     jumps to the anchor immediately — but the hero video and photos are still
+     loading. When they land, they push the section down and the visitor is left
+     stranded in a blank band. So: re-anchor once everything has laid out, and
+     force-reveal anything on screen so nobody ever stares at an empty page. */
+  function settleHash() {
+    const h = window.location.hash;
+    if (!h || h.length < 2) return;
+    let target;
+    try { target = document.querySelector(h); } catch (e) { return; }
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'auto', block: 'start' });
+    document.querySelectorAll('.reveal').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+  }
+  window.addEventListener('load', () => { settleHash(); setTimeout(settleHash, 500); });
 // Respect reduced-motion: freeze looping videos to their poster state
 if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   document.querySelectorAll('video[autoplay]').forEach(function(v){v.removeAttribute('autoplay');v.pause();});
