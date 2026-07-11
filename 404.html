@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page moved — Peak Pet Supply</title>
+<link rel="icon" href="/favicon.png">
+<meta name="robots" content="noindex">
+<script>
+  // Old Wix URLs -> the matching section of the new one-page site.
+  (function () {
+    var p = (window.location.pathname || "").toLowerCase().replace(/\/+$/, "");
+    var map = {
+      "/about": "#about", "/about-us": "#about", "/our-story": "#about",
+      "/products": "#products", "/shop": "#products", "/store": "#products",
+      "/brands": "#brands",
+      "/events": "#events",
+      "/gift-cards": "#giftcards", "/giftcards": "#giftcards",
+      "/contact": "#contact", "/contact-us": "#contact",
+      "/hours": "#visit", "/location": "#visit", "/visit": "#visit"
+    };
+    var target = "/" + (map[p] || "");
+    setTimeout(function () { window.location.replace(target); }, 1200);
+  })();
+</script>
+<style>
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+       justify-content:center;gap:1rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       background:#12253d;color:#f6f1e7;text-align:center;padding:2rem}
+  img{width:120px;height:auto}
+  h1{font-size:1.35rem;margin:0;font-weight:600}
+  p{margin:0;opacity:.85;line-height:1.6}
+  a{color:#f2c014;font-weight:600}
+</style>
+</head>
+<body>
+  <img src="/logo.png" alt="Peak Pet Supply">
+  <h1>That page has a new home.</h1>
+  <p>We rebuilt the Peak Pet Supply website — taking you to the right spot now.<br>
+     If nothing happens, <a href="/">head to the homepage</a>.</p>
+</body>
+</html>
