@@ -6,3 +6,7 @@ _brand-cards.zip
 _nutrisource-logo-check.sh
 _astro-section.html
 _email-signature.html
+_brand-pdfs/
+.DS_Store
+.claude/
+.wrangler/
