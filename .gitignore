@@ -10,3 +10,4 @@ _brand-pdfs/
 .DS_Store
 .claude/
 .wrangler/
+_sig-gen.py
