@@ -1,0 +1,5 @@
+# brand package: keep audio + renders + trace intermediates out of the public repo
+brand/pps-brand/audio/
+brand/pps-brand/renders/
+brand/pps-brand/_build/masks/
+brand/pps-brand/_build/__pycache__/

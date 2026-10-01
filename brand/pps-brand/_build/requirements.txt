@@ -1,0 +1,6 @@
+# python3 -m venv .venv && .venv/bin/pip install -r _build/requirements.txt   (rsvg-convert + potrace via brew)
+pillow
+numpy
+scipy
+scikit-image
+svgpathtools
