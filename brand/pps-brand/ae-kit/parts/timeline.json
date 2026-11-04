@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "frames": 435,
+ "frames": 447,
  "audio": [
   {
    "key": "bed",
@@ -42,7 +42,7 @@
    "cues": [
     0.075
    ],
-   "start": 11.96,
+   "start": 2.28,
    "gain": 0.92
   },
   {
@@ -65,7 +65,7 @@
    "cues": [
     0.17
    ],
-   "start": 2.49,
+   "start": 3.96,
    "gain": 0.7
   },
   {
@@ -96,7 +96,7 @@
    "cues": [
     0.17
    ],
-   "start": 4.4,
+   "start": 4.88,
    "gain": 0.8
   }
  ],
@@ -104,9 +104,9 @@
   "mtn_l": 0.82,
   "mtn_c": 1.33,
   "mtn_r": 1.79,
-  "land": 2.6,
-  "box": 4.5,
-  "peak": 4.71,
+  "land": 2.42,
+  "box": 4.07,
+  "peak": 4.99,
   "pet": 5.6,
   "settle": 5.89,
   "flash": 12.03,
@@ -124,7 +124,19 @@
   "voc_to": 6.13,
   "voc_rate": 5,
   "voc_syl": 1.0,
-  "lock_amt": 1.0
+  "lock_amt": 1.0,
+  "syl2_off": -0.12,
+  "duck_t": 2.47,
+  "duck_len": 0.14,
+  "duck_amt": 1.0,
+  "boa_off": 0.2,
+  "boa_grow": 2.13,
+  "boa_size": 1.0,
+  "boa_sparkle": 1.0,
+  "boa_amt": 0.8,
+  "boa_tail": 78,
+  "wag_amt": 6.0,
+  "jaw_amt": 40.0
  },
  "vocal": {
   "syllables": [
@@ -210,10 +222,10 @@
   "MTN_L": 25,
   "MTN_C": 40,
   "MTN_R": 54,
-  "DROP": 68,
-  "LAND": 78,
-  "BOX": 135,
-  "PEAK": 141,
+  "DROP": 63,
+  "LAND": 73,
+  "BOX": 122,
+  "PEAK": 150,
   "PET": 168,
   "SETTLE": 177,
   "FLASH": 361,
@@ -225,13 +237,17 @@
   "VOC0": 216,
   "VOC1": 361,
   "SYL": [
-   284,
-   295,
-   307,
-   319,
-   329,
-   338,
-   360
+   281,
+   292,
+   303,
+   315,
+   326,
+   334
+  ],
+  "BOA": 354,
+  "DUCK": [
+   74,
+   78
   ],
   "LOCKS": [
    366,

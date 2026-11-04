@@ -24,7 +24,7 @@ Package built 2026-09-16 (v1). Lives in the site repo at `brand/pps-brand/`; `au
 - **Trace recipe** — alpha → 2× zoom → gaussian 1.2 (`mode='constant'`) → threshold 0.5 → potrace `-a 1.0 -O 0.3 -t 30`; dog / mountain and left / centre / right peaks by watershed on the distance transform (cores = opening, disk r 50 px). Cuts land at the paws and the ridge saddles.
 
 ## Naming
-`pps-<part>-<variant>-<size>` — lowercase, hyphens. `-on-dark` = transparent file recolored for dark grounds; `-on-navy` / `-on-cream` = filled ground; `-on-navy-color` = offwhite emblem + gold box (hero / social / ident scheme).
+`pps-<part>-<variant>-<size>` — lowercase, hyphens. `-on-dark` = transparent file recolored for dark grounds; `-on-navy` / `-on-cream` = filled ground; `-on-navy-color` = offwhite emblem + gold box (hero / social / ident scheme); `-pearl` = the dog wearing the ident's pink boa (`_build/pearl.py`, static pose of the v1.5 boa; lockup-vertical / mark / dog, on-dark and on-light).
 
 ## Regenerate
 ```bash
@@ -39,3 +39,9 @@ Previz: run the `pps-previz` launch config (serves this folder on :8767) and ope
 
 ## Site
 The site still references `img/logo-white.svg` etc. Once this package is approved, swap those for `masters/pps-lockup-vertical-on-dark.svg` (header/footer), `icons/favicon.ico` + `icons/pps-favicon-dog-*.png` (favicons), and `social/pps-og-1200x630.png` (share card) — all vector-true and smaller than the PNG-wrapped files.
+
+## 2026-10-20 — v1.5: first AE build, rendered, shipped
+- `ae-kit/build-comp.jsx` builds `PPS_Summit` in AE 2026 (`zsh ae-kit/RUN-AE-BUILD.command`, then `RUN-AE-SNAP.command` for stills + save, `RUN-AE-RENDER.command` to render). Project: `ae-kit/PPS_Summit.aep`. Render: `ae-kit/renders/PPS_Summit_pearl_v1.5.mp4` (1080p30, 14.9 s).
+- Casey's directions during the build, now in both AE and the previz: jaw sings, tail wags on the bed's pulse, boa grows with the riff and pulses on its hits (tail 78 px, drops on the big hit), white arcs on the "honey I said" phrases, mountains launch fast, 14.9 s. Details: `ae-kit/PPS-MOTION-SPEC.md` v1.5.
+- Shipped to Jaime: `renders/PPS_Summit_pearl_edition_v1.5.zip` (video, poster, GIF, logos, icons, social, brand sheet) + a private preview page (claude.ai artifact "Peak Pet Supply Summit Ident").
+- Pearl-edition logo variants added (`masters/*-pearl.svg`, `png/*-pearl-*.png`, generator `_build/pearl.py`); in the Jaime zip under `logo/pearl-edition/`.
