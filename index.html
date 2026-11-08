@@ -327,7 +327,7 @@ a{color:inherit}a:hover{color:inherit}
     <p data-dc-tpl="31" style="font-size: 17.5px; line-height: 1.55; color: rgba(255, 255, 255, 0.82); max-width: 52ch; margin: 0px 0px 26px; text-wrap: pretty;">Premium food, natural remedies, and trail-ready gear — picked by neighbors who know what high altitude asks of a pet.</p>
     <div data-dc-tpl="32" style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
       <a data-dc-tpl="34" href="#visit" class="scp1" style="text-decoration: none; background: rgb(229, 185, 78); color: rgb(22, 33, 27); padding: 15px 30px; border-radius: 4px; font-weight: 600; font-size: 15.5px;">Visit the Store</a>
-      <div data-dc-tpl="35" style="color: rgba(255, 255, 255, 0.75); font-size: 14.5px; margin-left: 8px;">Open today 10–6 · 972 Golden Gate Canyon Rd</div>
+      <a data-dc-tpl="35" id="hero-hours" href="#visit" style="color: rgba(255, 255, 255, 0.75); font-size: 14.5px; margin-left: 8px; text-decoration: none;">Mon–Fri 10–6 · Sat–Sun 10–4 · 972 Golden Gate Canyon Rd</a>
     </div>
   </div></div><div data-dc-tpl="36" style="background: rgb(22, 33, 27); border-top: 1px solid rgba(255, 255, 255, 0.12); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
   <div data-dc-tpl="37" style="padding: 32px min(40px, 5vw); border-right: 1px solid rgba(255, 255, 255, 0.12);">
@@ -373,6 +373,7 @@ a{color:inherit}a:hover{color:inherit}
   o.addEventListener('click',play);
   b.addEventListener('click',function(){document.getElementById('summit-stage').scrollIntoView({behavior:'smooth',block:'center'});play();});
   v.addEventListener('ended',function(){v.controls=false;o.style.display='flex';});
+  try{var hh=document.getElementById('hero-hours');var wd=new Date().toLocaleDateString('en-US',{weekday:'short',timeZone:'America/Denver'});if(hh)hh.textContent='Open today '+((wd==='Sat'||wd==='Sun')?'10–4':'10–6')+' · 972 Golden Gate Canyon Rd';}catch(e){}
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     document.querySelectorAll('video.pps-loop').forEach(function(l){l.removeAttribute('autoplay');l.pause();});
   }
